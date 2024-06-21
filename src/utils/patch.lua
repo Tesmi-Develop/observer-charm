@@ -1,5 +1,4 @@
 -- https://github.com/littensy/charm/blob/main/src/sync/patch.luau
-local validate = require(script.Parent.validate)
 
 --[=[
 	A special value that denotes the absence of a value. Used to represent
@@ -19,18 +18,6 @@ local function diff(prevState: { [any]: any }, nextState: { [any]: any })
 			patches[key] = NONE
 		elseif type(previous) == "table" and type(next) == "table" then
 			patches[key] = diff(previous, next)
-		end
-	end
-
-	if _G.__DEV__ then
-		for key, value in prevState do
-			validate(value, key)
-		end
-
-		for key, value in nextState do
-			if prevState[key] ~= value then
-				validate(value, key)
-			end
 		end
 	end
 
