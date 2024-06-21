@@ -1,1 +1,1 @@
-print("Hello world")
+export * from "./atom-observer";

@@ -1,6 +1,6 @@
 {
-  "name": "@rbxts/package-name",
-  "version": "0.0.1",
+  "name": "@rbxts/observer-charm",
+  "version": "0.1.0",
   "description": "",
   "main": "out/init.lua",
   "scripts": {
@@ -10,9 +10,12 @@
     "serve": "rojo serve test/default.project.json",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "roblox-ts",
+    "charm"
+  ],
+  "author": "tesmi",
+  "license": "MIT",
   "types": "out/index.d.ts",
   "files": [
     "out",
@@ -36,6 +39,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@rbxts/charm": "^0.3.1",
     "@rbxts/testez": "^0.4.2-ts.0"
   }
 }
