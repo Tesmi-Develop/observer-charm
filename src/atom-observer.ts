@@ -48,7 +48,7 @@ export class AtomObserver {
 		this.connections.forEach((disconnect) => disconnect());
 	}
 
-	private generateSyncPayloadInit(atom: Atom<any>): SyncPayload<any> {
+	public GenerateHydratePayload(atom: Atom<any>): SyncPayload<any> {
 		return {
 			type: "init",
 			data: atom(),
