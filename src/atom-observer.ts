@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Atom, subscribe, SyncPayload } from "@rbxts/charm";
+import { Atom, subscribe, SyncPatch, SyncPayload } from "@rbxts/charm";
 import setInterval from "./utils/set-interval";
 import { diff } from "./utils/patch";
 
@@ -10,7 +10,7 @@ export class AtomObserver {
 	private isChanging = false;
 	private interval = 0;
 	private stateSnapshot = new Map<Atom<any>, unknown>();
-	private listeners = new Map<Atom<any>, (value: SyncPayload<any>) => void>();
+	private listeners = new Map<Atom<any>, (value: SyncPatch<any>) => void>();
 
 	constructor(interval?: number) {
 		this.interval = interval ?? this.interval;
@@ -26,7 +26,7 @@ export class AtomObserver {
 		this.stateSnapshot.delete(atom);
 	}
 
-	public Connect<S>(atom: Atom<S>, listener: (value: SyncPayload<S>) => void): () => void {
+	public Connect<S>(atom: Atom<S>, listener: (value: SyncPatch<S>) => void): () => void {
 		this.addAtom(atom);
 		this.listeners.set(atom, listener);
 

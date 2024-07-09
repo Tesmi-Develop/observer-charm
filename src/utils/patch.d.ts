@@ -5,4 +5,4 @@ interface NONE {
 
 export declare const NONE: NONE;
 export declare function diff(prevState: object, nextState: object): object;
-export declare function apply(state: any, patches: any): any;
+export declare function apply(state: any, patches: any, mapType: any): any;
