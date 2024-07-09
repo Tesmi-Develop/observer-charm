@@ -55,13 +55,6 @@ export class AtomObserver {
 		};
 	}
 
-	private generateSyncPayloadPatch(patch: any): SyncPayload<any> {
-		return {
-			type: "patch",
-			data: patch,
-		};
-	}
-
 	public Start() {
 		if (this.isStarted) return;
 		this.isStarted = true;
@@ -75,7 +68,7 @@ export class AtomObserver {
 				this.isChanging = false;
 
 				for (const [atom, patch] of pairs(diffs)) {
-					this.listeners.get(atom as Atom<any>)!(this.generateSyncPayloadPatch(patch));
+					this.listeners.get(atom as Atom<any>)!(patch);
 				}
 			}, this.interval),
 		);
